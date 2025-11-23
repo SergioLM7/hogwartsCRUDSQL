@@ -48,4 +48,14 @@ public class WizardDAO {
         return result;
     }
 
+    public void delete(int id) throws SQLException {
+
+        String sql = "DELETE FROM Wizard where id=?";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, id);
+        ps.executeUpdate();
+        ps.close();
+    }
+
 }

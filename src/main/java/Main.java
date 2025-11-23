@@ -34,16 +34,18 @@ public class Main {
         wands.forEach(System.out::println);
 
 
-        Wizard harry = new Wizard("Harry Potter", 17, 1, 1);
-        Wizard ron = new Wizard("Ron Weasley", 17, 1, 2);
-        Wizard hermione = new Wizard("Hermione Granger", 17, 1, 3);
-        Wizard draco = new Wizard("Draco Malfoy", 17, 2, 4);
+        Wizard harry = new Wizard("Harry Potter", 17, 1, wands.get(0).getId());
+        Wizard ron = new Wizard("Ron Weasley", 17, 1, wands.get(1).getId());
+        Wizard hermione = new Wizard("Hermione Granger", 17, 1, wands.get(2).getId());
+        Wizard draco = new Wizard("Draco Malfoy", 17, 2, wands.get(3).getId());
 
         WizardDAO wizardDao = new WizardDAO();
 //        wizardDao.create(harry);
 //        wizardDao.create(ron);
 //        wizardDao.create(hermione);
 //        wizardDao.create(draco);
+
+       // wizardDao.delete(4);
 
         List<Wizard> wizards = wizardDao.getAll();
         wizards.forEach(System.out::println);
