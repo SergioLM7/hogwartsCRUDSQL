@@ -25,5 +25,23 @@ public class WandDAO {
         ps.close();
     }
 
- 
+    public List<Wand> getAll() throws SQLException {
+        List<Wand> result = new ArrayList<>();
+        String sql = "SELECT * FROM wand";
+
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+
+        while(rs.next()) {
+            result.add(
+                    new Wand(rs.getInt("id"),
+                            rs.getString("wood"),
+                            rs.getString("core"),
+                            rs.getDouble("length"))
+            );
+        }
+
+        rs.close();
+        return result;
+    }
 }
