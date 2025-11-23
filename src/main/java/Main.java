@@ -40,10 +40,10 @@ public class Main {
         Wizard draco = new Wizard("Draco Malfoy", 17, 2, 4);
 
         WizardDAO wizardDao = new WizardDAO();
-        wizardDao.create(harry);
-        wizardDao.create(ron);
-        wizardDao.create(hermione);
-        wizardDao.create(draco);
+//        wizardDao.create(harry);
+//        wizardDao.create(ron);
+//        wizardDao.create(hermione);
+//        wizardDao.create(draco);
 
         List<Wizard> wizards = wizardDao.getAll();
         wizards.forEach(System.out::println);
