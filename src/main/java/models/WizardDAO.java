@@ -48,6 +48,20 @@ public class WizardDAO {
         return result;
     }
 
+    public void update(Wizard wizard) throws SQLException {
+        String sql = "UPDATE Wizard SET name=?, age=?, house_id=?, wand_id=? WHERE id=?";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, wizard.getName());
+        ps.setInt(2, wizard.getAge());
+        ps.setInt(3, wizard.getHouseId());
+        ps.setInt(4, wizard.getWandId());
+        ps.setInt(5, wizard.getId());
+
+        ps.executeUpdate();
+        ps.close();
+    }
+
     public void delete(int id) throws SQLException {
 
         String sql = "DELETE FROM Wizard where id=?";

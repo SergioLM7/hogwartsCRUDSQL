@@ -50,6 +50,11 @@ public class Main {
         List<Wizard> wizards = wizardDao.getAll();
         wizards.forEach(System.out::println);
 
+        ron.setName("Ronald Weasley");
+        ron.setAge(19);
+        ron.setId(2);
+
+        wizardDao.update(ron);
 
     }
 }
