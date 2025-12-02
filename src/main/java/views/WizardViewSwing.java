@@ -37,6 +37,7 @@ public class WizardViewSwing extends JFrame {
         JButton btnAdd = new JButton("Agregar ✚");
         JButton btnDelete = new JButton("Eliminar ❌");
         JButton btnRefresh = new JButton("Actualizar lista 🌀");
+        JButton btnUpdate = new JButton("Editar ✏️");
 
         JPanel inputPanel = new JPanel();
 
@@ -59,12 +60,29 @@ public class WizardViewSwing extends JFrame {
         inputPanel.add(btnAdd);
         inputPanel.add(btnDelete);
         inputPanel.add(btnRefresh);
+        inputPanel.add(btnUpdate);
 
         btnAdd.addActionListener(e ->{
             String name = txtName.getText();
             int age = Integer.parseInt(txtAge.getText());
             wizardController.addWizardSwing(name, age);
             loadData();
+        });
+
+        btnDelete.addActionListener(e -> {
+            int id = Integer.parseInt(txtId.getText());
+            wizardController.deleteWizard(id);
+            loadData();
+        });
+
+        btnRefresh.addActionListener(e -> {
+            loadData();
+        });
+
+        btnUpdate.addActionListener(e -> {
+            String name = txtName.getText();
+            int age = Integer.parseInt(txtAge.getText());
+            //TODO: TERMINAR METODO
         });
 
         loadData();

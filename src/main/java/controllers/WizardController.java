@@ -4,7 +4,6 @@ import models.Wizard;
 import models.WizardDAO;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class WizardController {
@@ -60,7 +59,7 @@ public class WizardController {
     public void deleteWizard(int id) {
         try {
             wizardDAO.delete(id);
-            System.out.println("✅ ¡Mago eliminado correctamente!");
+            System.out.println("👋🚂¡Mago eliminado correctamente!");
         } catch (SQLException e) {
             System.out.println("❌ Error al eliminar el mago con id " + id + ": " + e.getMessage());
         }
