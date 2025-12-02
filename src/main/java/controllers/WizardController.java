@@ -4,9 +4,7 @@ import models.Wizard;
 import models.WizardDAO;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.SortedMap;
 
 public class WizardController {
 
@@ -23,10 +21,10 @@ public class WizardController {
         try {
             Wizard miMago = new Wizard(name, age, house_id, wand_id);
             wizardDAO.create(miMago);
-            System.out.println("Mago agregado con éxito.");
+            System.out.println("✅ Mago agregado con éxito.");
 
         } catch (SQLException e) {
-            System.out.println("Error al agregar mago: " + e.getMessage());
+            System.out.println("❌ Error al agregar mago: " + e.getMessage());
         }
     }
 
@@ -35,7 +33,7 @@ public class WizardController {
         try {
             List<Wizard> wizardsList = wizardDAO.getAll();
             if(wizardsList.isEmpty()) {
-                System.out.println("No hay magos en la BBDD.");
+                System.out.println("🌪️ No hay magos en la BBDD.");
             }
 
             for(Wizard wizard: wizardsList) {
@@ -43,7 +41,7 @@ public class WizardController {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al listar los magos: " + e.getMessage());
+            System.out.println("❌ Error al listar los magos: " + e.getMessage());
         }
     }
 
@@ -52,18 +50,18 @@ public class WizardController {
             Wizard wizard = new Wizard(name, age, houseId, wandId);
             wizard.setId(id);
             wizardDAO.update(wizard);
-            System.out.println("¡Mago actualizado con éxito!");
+            System.out.println("✅ ¡Mago actualizado con éxito!");
         } catch(SQLException e){
-            System.out.println("Error al actualizar el mago " + name + ": " + e.getMessage());
+            System.out.println("❌ Error al actualizar el mago " + name + ": " + e.getMessage());
         }
     }
 
     public void deleteWizard(int id) {
         try {
             wizardDAO.delete(id);
-            System.out.println("¡Mago eliminado correctamente!");
+            System.out.println("✅ ¡Mago eliminado correctamente!");
         } catch (SQLException e) {
-            System.out.println("Error al eliminar el mago con id " + id + ": " + e.getMessage());
+            System.out.println("❌ Error al eliminar el mago con id " + id + ": " + e.getMessage());
         }
     }
 }
