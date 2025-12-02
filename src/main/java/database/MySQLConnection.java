@@ -16,9 +16,9 @@ public class MySQLConnection {
 
         try {
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Conexión exitosa a la BBDD de Hogwarts");
+            System.out.println("✅🏰Conexión exitosa a la BBDD de Hogwarts");
         } catch (SQLException e) {
-            System.out.println("Error de conexión: " + e.getMessage());
+            System.out.println("❌Error de conexión: " + e.getMessage());
         }
 
         return conn;

@@ -7,7 +7,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class WizardViewSwing extends JFrame {
@@ -20,7 +19,7 @@ public class WizardViewSwing extends JFrame {
     public WizardViewSwing() throws SQLException {
         wizardController = new WizardController();
         setTitle("🏰 Hogwarts - Gestión de Magos");
-        setSize(600, 600);
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //QUe no ponga en el panel las cosas donde le dé la gana
         setLocationRelativeTo(null);
@@ -40,9 +39,6 @@ public class WizardViewSwing extends JFrame {
         JButton btnRefresh = new JButton("Actualizar lista 🌀");
 
         JPanel inputPanel = new JPanel();
-        inputPanel.add(btnAdd);
-        inputPanel.add(btnDelete);
-        inputPanel.add(btnRefresh);
 
         panel.add(inputPanel, BorderLayout.SOUTH);
 
@@ -60,14 +56,23 @@ public class WizardViewSwing extends JFrame {
         txtAge = new JTextField(5);
         inputPanel.add(txtAge);
 
+        inputPanel.add(btnAdd);
+        inputPanel.add(btnDelete);
+        inputPanel.add(btnRefresh);
 
+        btnAdd.addActionListener(e ->{
+            String name = txtName.getText();
+            int age = Integer.parseInt(txtAge.getText());
+            wizardController.addWizardSwing(name, age);
+            loadData();
+        });
 
-
+        loadData();
     }
 
     private void loadData() {
         model.setRowCount(0);
-        List<Wizard> wizardList = new ArrayList<>();
+        List<Wizard> wizardList = wizardController.getAllWizards();
         if(!wizardList.isEmpty()) {
             for(Wizard w: wizardList) {
                 model.addRow(new Object[]{w.getId(), w.getName(), w.getAge()});

@@ -4,6 +4,7 @@ import models.Wizard;
 import models.WizardDAO;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class WizardController {
@@ -62,6 +63,24 @@ public class WizardController {
             System.out.println("✅ ¡Mago eliminado correctamente!");
         } catch (SQLException e) {
             System.out.println("❌ Error al eliminar el mago con id " + id + ": " + e.getMessage());
+        }
+    }
+
+    public List<Wizard> getAllWizards() {
+        try {
+            return wizardDAO.getAll();
+        } catch (SQLException e) {
+            System.out.println("❌ Error al recuperar los magos de la BBDD: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public void addWizardSwing(String name, int age) {
+        try {
+            wizardDAO.create2(new Wizard(name, age));
+            System.out.println("✅ Mago agregado con éxito.");
+        } catch (SQLException e) {
+            System.out.println("❌ Error al añadir el mago: " + e.getMessage());
         }
     }
 }
